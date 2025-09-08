@@ -3,6 +3,11 @@
 .wrapper {
   margin: 0 auto;
   padding: 0 0 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+
   @include for-tablet-down {
     max-width: 630px;
   }
@@ -36,10 +41,55 @@
     }
   }
 
-  .userList {
+  .filterWrapper {
+    margin: 0 auto 24px;
+    max-width: 630px;
+    width: 100%;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+
+    @include for-mobile-down {
+      flex-wrap: wrap;
+    }
+
+    .filterItem {
+      text-align: center;
+      border: 1px solid #dcdce5;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      background: #f2f1ff;
+      width: 100%;
+
+      input {
+        border: 1px solid #dcdce5;
+        padding: 0 24px;
+        height: 62px;
+        width: 100%;
+        border-radius: 16px;
+        background: #f2f1ff;
+        outline: none;
+        color: #2a313c;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+      }
+    }
+  }
+
+  .listContainer {
+    height: 70vh;
+    min-height: 360px;
+    overflow: auto;
+  }
+
+  .gridList {
     display: grid;
     gap: 28px;
     grid-template-columns: repeat(3, 1fr);
+    padding: 0 4px;
 
     @include for-desktop-down {
       grid-template-columns: repeat(2, 1fr);
@@ -48,59 +98,63 @@
     @include for-tablet-down {
       grid-template-columns: repeat(1, 1fr);
     }
+  }
 
-    .notFound {
-      margin: 24px 0 0;
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 30px;
-      margin: 0 auto;
-    }
+  .gridItem {
+    display: flex;
 
     .userCard {
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 18px;
-      padding: 31px 27px;
+      padding: 24px;
       border: 1px solid #dcdce5;
-      border-radius: 28px;
+      border-radius: 20px;
+      background: #fff;
       min-height: 250px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 
       .profilePhoto {
-        width: 180px;
-        height: 180px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         margin: 0 auto;
       }
 
       .userName {
-        font-size: 28px;
-        font-weight: 500;
-        line-height: 36px;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .userEmail {
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 400;
-        line-height: 30px;
+        line-height: 1.4;
+        color: #4b5563;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .buttonWrapper {
-        margin: auto 0 0;
+        margin-top: auto;
 
         button {
           background: #8631ec;
           width: 100%;
-          font-size: 18px;
+          height: 44px;
+          border-radius: 8px;
           color: #fff;
+          font-size: 16px;
           font-weight: 500;
           display: flex;
           align-items: center;
           justify-content: center;
-          text-align: center;
-          height: 50px;
-          border-radius: 8px;
-          padding: 0 24px;
 
           @include hover-supported {
             background-color: #5e24a5;
@@ -108,19 +162,13 @@
         }
       }
     }
+  }
 
-    .sentinel {
-      padding: 12px 0;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    .endOfList {
-      padding: 12px 0 24px;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
+  .sentinel,
+  .endOfList {
+    text-align: center;
+    padding: 16px 0;
+    font-size: 14px;
+    color: #6b7280;
   }
 }

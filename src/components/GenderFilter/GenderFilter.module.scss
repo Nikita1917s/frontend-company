@@ -1,0 +1,15 @@
+@use "/src/styles/mixins" as *;
+
+.filters {
+  width: 150px;
+  margin: 16px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview {
+  font-size: 14px;
+  text-align: center;
+  color: #4b5563;
+}

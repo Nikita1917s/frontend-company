@@ -10,4 +10,5 @@ export interface User {
   postCode: string;
   street: string;
   streetNumber: string;
+  orders: number[];
 }

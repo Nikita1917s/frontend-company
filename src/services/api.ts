@@ -14,7 +14,31 @@ export const userApi = createApi({
     getOrders: b.query<Order[], void>({
       query: () => "data/orders.json",
     }),
+    getUserByEmail: b.query<User | undefined, string>({
+      async queryFn(email, _api, _extraOptions, fetchWithBQ) {
+        const result = await fetchWithBQ("data/customers.json");
+        if (result.error) return { error: result.error };
+        const users = result.data as User[];
+        const user = users.find((u) => u.email === email);
+        return { data: user };
+      },
+    }),
+    getOrdersByNumbers: b.query<Order[], number[]>({
+      async queryFn(numbers, _api, _extraOptions, fetchWithBQ) {
+        const result = await fetchWithBQ("data/orders.json");
+        if (result.error) return { error: result.error };
+        const orders = result.data as Order[];
+
+        const filtered = orders.filter((o) => numbers.includes(o.number));
+        return { data: filtered };
+      },
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetOrdersQuery } = userApi;
+export const {
+  useGetUsersQuery,
+  useGetOrdersQuery,
+  useGetUserByEmailQuery,
+  useGetOrdersByNumbersQuery,
+} = userApi;

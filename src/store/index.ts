@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer";
 import {
   useDispatch,
   useSelector,
@@ -9,7 +8,6 @@ import { userApi } from "@/services/api";
 
 export const store = configureStore({
   reducer: {
-    ...rootReducer,
     [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (gDM) => gDM().concat(userApi.middleware),
