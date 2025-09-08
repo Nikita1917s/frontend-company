@@ -28,6 +28,7 @@ export const userApi = createApi({
         const result = await fetchWithBQ("data/orders.json");
         if (result.error) return { error: result.error };
         const orders = result.data as Order[];
+console.log('numbers', 'number', result);
 
         const filtered = orders.filter((o) => numbers.includes(o.number));
         return { data: filtered };

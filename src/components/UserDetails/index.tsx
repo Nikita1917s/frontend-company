@@ -11,10 +11,6 @@ export interface UsersProps {
 
 export const UserDetails = ({ user, orders }: UsersProps) => {
   const navigate = useNavigate();
-
-  console.log(orders);
-  
-
   return (
     <div className={styles["mainWrapper"]}>
       <div className={styles["userWrapper"]}>
@@ -33,7 +29,7 @@ export const UserDetails = ({ user, orders }: UsersProps) => {
             StreetNumber: {user.streetNumber}
           </p>
           <p className={styles["userOrdersAmount"]}>
-            Number of orders: {user.orders.length}
+            Number of orders: {orders.length}
           </p>
         </div>
         <div className={styles["buttonWrapper"]}>
@@ -43,7 +39,7 @@ export const UserDetails = ({ user, orders }: UsersProps) => {
 
       <div className={styles["ordersWrapper"]}>
         {orders.map((order) => (
-          <div className={styles["orderItem"]}>
+          <div key={order.number} className={styles["orderItem"]}>
             <div className={styles["orderField"]}>
               <p>Number</p>
               <p>{order.number}</p>
