@@ -1,0 +1,38 @@
+@use "./mixins" as *;
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #191919;
+  min-height: 100%;
+  overflow: auto !important;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.wrapper {
+  max-width: calc(1200px + 32px);
+  width: 100%;
+  padding: 30px 16px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include for-desktop-up {
+    padding: 65px 32px;
+  }
+}
+
+img {
+  display: block;
+}

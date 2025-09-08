@@ -1,0 +1,42 @@
+@use '/src/styles/mixins' as *;
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  margin: auto;
+
+  .doubleBounce1,
+  .doubleBounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #3498db;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .doubleBounce2 {
+    animation-delay: -1s;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 48px;
+}
